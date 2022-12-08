@@ -1,8 +1,7 @@
-#include <stdio.h>
+#include <cstdio>
 #include <iostream>
 #include <string>
 #include <random>
-#include <time.h>
 #include <ctime>
 using namespace std;
 
@@ -16,7 +15,7 @@ void procAffiche(int nb_allumette){                                             
     cout<<endl;
 }
 
-int tourJoueur(int allu_saisie,string nom_joueur){                              //Fonction Tour Joueur
+int tourJoueur(int allu_saisie,const string nom_joueur){                              //Fonction Tour Joueur
     cout<<"\nLe joueur "<<nom_joueur<<" joue"<<endl;
     cout<<"==========================================================================="<<endl;
     cout<<"Saisir un nombre d'allumette(s) a prendre entre 1 et 3 (O pour abandonner)."<<endl;
@@ -33,7 +32,7 @@ int tourJoueur(int allu_saisie,string nom_joueur){                              
     return allu_saisie;
 }
 
-int tourNiv_bot(int allu_saisie,int nb_allumette,string niveau){             //Fonction Tour Bot
+int tourNiv_bot(int allu_saisie,int nb_allumette,const string niveau){             //Fonction Tour Bot
     int i;
     cout<<"\nL'ordi joue"<<endl;
     if (niveau=="N" or niveau=="n"){                                            //Bot NOVICE
@@ -57,7 +56,8 @@ int tourNiv_bot(int allu_saisie,int nb_allumette,string niveau){             //F
 
 void delay_ms(int i)                                                            //Marque un temps d'arret defini en millisecondes
 {
-    clock_t start,end;
+    clock_t start;
+    clock_t end;
     start=clock();
     while(((end=clock())-start)<=i);
 }
@@ -66,7 +66,9 @@ int main()
 {
     int nb_allu;
     int allu_choisie;
-    string niv,nom,prem;
+    string niv;
+    string nom;
+    string prem;
     int i;
     cout<<"Règle du jeu des allumettes:"                                        //Règle du jeu pour informer le joueur
     "\n     - On dispose un petit tas d'allumettes." 
@@ -96,10 +98,7 @@ int main()
     cout<<"Qui est le premier joueur: ";                                        //(nom)ou(ordinateur)
     cin>>prem;
     while ((prem!=nom and prem!="ordi")and prem!="ordinateur"){
-        if (prem!=nom){
-            cout<<"Incorrect!"<<endl;
-        }
-        cout<<endl<<"\nSaisir votre nom ou ordinateur pour commencer"<<endl;
+        cout<<"Incorrect!"<<endl<<"\nSaisir votre nom ou ordinateur pour commencer"<<endl;
         cin>>prem;
     }
     procAffiche(nb_allu);
