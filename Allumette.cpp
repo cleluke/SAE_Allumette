@@ -15,7 +15,7 @@ void procAffiche(int nb_allumette){                                             
     cout<<endl;
 }
 
-int tourJoueur(int allu_saisie,const string nom_joueur){                              //Fonction Tour Joueur
+int tourJoueur(int allu_saisie,string const nom_joueur){                          //Fonction Tour Joueur
     cout<<"\nLe joueur "<<nom_joueur<<" joue"<<endl;
     cout<<"==========================================================================="<<endl;
     cout<<"Saisir un nombre d'allumette(s) a prendre entre 1 et 3 (O pour abandonner)."<<endl;
@@ -32,7 +32,7 @@ int tourJoueur(int allu_saisie,const string nom_joueur){                        
     return allu_saisie;
 }
 
-int tourNiv_bot(int allu_saisie,int nb_allumette,const string niveau){             //Fonction Tour Bot
+int tourNiv_bot(int allu_saisie,int nb_allumette,string const niveau){             //Fonction Tour Bot
     int i;
     cout<<"\nL'ordi joue"<<endl;
     if (niveau=="N" or niveau=="n"){                                            //Bot NOVICE
